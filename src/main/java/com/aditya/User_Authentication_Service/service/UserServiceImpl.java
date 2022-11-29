@@ -42,6 +42,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public String deleteUserById(int id) {
+		this.userRepository.deleteById(id);
+		return "User Deleted";
+	}
+
+	@Override
 	public User loginCheck(String username, String password) throws UserNotFoundException {
 		User userObj = this.userRepository.findByUserNameAndPassword(username, password);
 		if (userObj == null) {

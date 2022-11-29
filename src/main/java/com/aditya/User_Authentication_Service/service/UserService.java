@@ -11,6 +11,8 @@ public interface UserService {
 	User saveUser(User user);
 	List<User> getAllUser();
 	Optional<User> getByUserId(int id);
+
+	String deleteUserById( int id);
 	User loginCheck(String username, String password) throws UserNotFoundException;
 
 }
