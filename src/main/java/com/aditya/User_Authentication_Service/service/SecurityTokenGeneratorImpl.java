@@ -7,5 +7,15 @@
  */
 package com.aditya.User_Authentication_Service.service;
 
-public class SecurityTokenGeneratorImpl {
+import com.aditya.User_Authentication_Service.domain.User;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
+@Service
+public class SecurityTokenGeneratorImpl implements SecurityTokenGenerator {
+	@Override
+	public Map<String, String> generateToken(User user) {
+		return null;
+	}
 }
