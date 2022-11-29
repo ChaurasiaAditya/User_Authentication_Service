@@ -8,6 +8,7 @@
 package com.aditya.User_Authentication_Service.service;
 
 import com.aditya.User_Authentication_Service.domain.User;
+import com.aditya.User_Authentication_Service.exception.UserNotFoundException;
 import com.aditya.User_Authentication_Service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
 	@Autowired
 	public UserServiceImpl(UserRepository userRepository) {
@@ -41,7 +42,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findByUserNameAndPassword(String username, String password) {
-		return this.userRepository.findByUserNameAndPassword(username,password);
+	public User loginCheck(String username, String password) throws UserNotFoundException {
+		User userObj = this.userRepository.findByUserNameAndPassword(username, password);
+		if (userObj == null) {
+			throw new UserNotFoundException();
+		}
+		return userObj;
 	}
 }
