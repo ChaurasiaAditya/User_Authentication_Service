@@ -48,11 +48,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User loginCheck(String username, String password) throws UserNotFoundException {
+	public void loginCheck(String username, String password) throws UserNotFoundException {
 		User userObj = this.userRepository.findByUserNameAndPassword(username, password);
 		if (userObj == null) {
 			throw new UserNotFoundException();
 		}
-		return userObj;
 	}
 }

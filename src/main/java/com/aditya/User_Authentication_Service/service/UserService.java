@@ -13,6 +13,6 @@ public interface UserService {
 	Optional<User> getByUserId(int id);
 
 	String deleteUserById( int id);
-	User loginCheck(String username, String password) throws UserNotFoundException;
+	void loginCheck(String username, String password) throws UserNotFoundException;
 
 }

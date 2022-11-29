@@ -23,7 +23,7 @@ public class SecurityTokenGeneratorImpl implements SecurityTokenGenerator {
 		String jwtToken;
 		jwtToken = Jwts.builder().setSubject(user.getUserName()) // Header
 			.setIssuedAt(new Date()) // Payload
-			.signWith(SignatureAlgorithm.HS256, "secretkey.") // Verify Signature
+			.signWith(SignatureAlgorithm.HS256, "secretKey.") // Verify Signature
 			.compact();
 
 		Map<String, String> map = new HashMap<>();
